@@ -11,7 +11,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
- //esto es un cambio realizado
+
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
