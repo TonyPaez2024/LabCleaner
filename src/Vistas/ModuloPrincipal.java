@@ -20,16 +20,18 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Logo = new javax.swing.JLabel();
         Panel = new Vistas.PanelRound();
         detallesPendrive = new javax.swing.JLabel();
         barraCarga = new javax.swing.JProgressBar();
         nombrePendrive = new javax.swing.JLabel();
+        Logo = new javax.swing.JLabel();
         scanButton = new javax.swing.JButton();
         elementosDefectuosos = new javax.swing.JLabel();
         buttonElementosDefectuso = new javax.swing.JButton();
         historialScan = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        modoOscuro = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,10 +42,6 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(440, 780));
         getContentPane().setLayout(null);
-
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Logo (1).png"))); // NOI18N
-        getContentPane().add(Logo);
-        Logo.setBounds(90, 70, 250, 110);
 
         Panel.setBackground(new java.awt.Color(4, 72, 96));
         Panel.setRoundBottomLeft(50);
@@ -68,6 +66,10 @@ public class ModuloPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(Panel);
         Panel.setBounds(60, 250, 320, 139);
+
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Logo (1).png"))); // NOI18N
+        getContentPane().add(Logo);
+        Logo.setBounds(90, 70, 250, 110);
 
         scanButton.setBackground(new java.awt.Color(239, 244, 240));
         scanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/boton-escanear (2).png"))); // NOI18N
@@ -110,20 +112,82 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 700, 180, 19);
 
+        modoOscuro.setText("jButton1");
+        modoOscuro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoOscuroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(modoOscuro);
+        modoOscuro.setBounds(20, 20, 75, 23);
+
         Fondo.setBackground(new java.awt.Color(239, 244, 240));
-        getContentPane().add(Fondo);
-        Fondo.setBounds(0, 0, 430, 780);
+        jPanel1.add(Fondo);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 430, 780);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void scanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scanButtonActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_scanButtonActionPerformed
 
     private void buttonElementosDefectusoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonElementosDefectusoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonElementosDefectusoActionPerformed
+
+    private void modoOscuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoOscuroActionPerformed
+
+       
+        jPanel1.setBackground(Color.BLACK);
+        
+         modoOscuro.setOpaque(true);
+         modoOscuro.setBackground(Color.WHITE);
+        
+       //Panel
+        Panel.setBackground(Color.decode("#044860"));
+        Panel.repaint();
+        //Panel.setforeground(Color.decode("codigo del color"))
+        
+        
+        Logo.setOpaque(true);
+        Logo.setBackground(Color.BLACK);
+        
+        scanButton.setOpaque(true);
+        scanButton.setBackground(Color.BLACK); 
+        
+        //este es un boton
+        buttonElementosDefectuso.setOpaque(true);
+        buttonElementosDefectuso.setBackground(Color.BLACK);
+        //para cambiar la imagen de los botones este es un ejemplo 
+        //buttonElementosDefectuso.setIcon(new (getclass().getResource("/img/nombre_del_archivo")));
+        
+
+        
+        historialScan.setOpaque(true);
+        historialScan.setBackground(Color.BLACK);
+        
+        jLabel1.setOpaque(true);
+        jLabel1.setBackground(Color.BLACK);
+        
+       
+        
+        
+        nombrePendrive.setOpaque(true);
+        nombrePendrive.setBackground(Color.decode("#044860"));
+        
+        detallesPendrive.setOpaque(true);
+        detallesPendrive.setBackground(Color.decode("#044860"));
+        
+        
+        barraCarga.setOpaque(true);
+        barraCarga.setBackground(Color.WHITE);
+        
+       
+        
+    }//GEN-LAST:event_modoOscuroActionPerformed
 
     public static void main(String args[]) {
       
@@ -141,11 +205,9 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ModuloPrincipal().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> {
+            new ModuloPrincipal().setVisible(true);
+         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -158,6 +220,8 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel elementosDefectuosos;
     private javax.swing.JLabel historialScan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modoOscuro;
     private javax.swing.JLabel nombrePendrive;
     private javax.swing.JButton scanButton;
     // End of variables declaration//GEN-END:variables

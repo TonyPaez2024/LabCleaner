@@ -58,23 +58,29 @@ public class PanelRound extends JPanel {
 
     @Override
     protected void paintComponent(Graphics grphcs) {
-        Graphics2D g2 = (Graphics2D) grphcs.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setColor(getBackground());
-        Area area = new Area(createRoundTopLeft());
-        if (roundTopRight > 0) {
-            area.intersect(new Area(createRoundTopRight()));
-        }
-        if (roundBottomLeft > 0) {
-            area.intersect(new Area(createRoundBottomLeft()));
-        }
-        if (roundBottomRight > 0) {
-            area.intersect(new Area(createRoundBottomRight()));
-        }
-        g2.fill(area);
-        g2.dispose();
-        super.paintComponent(grphcs);
+    Graphics2D g2 = (Graphics2D) grphcs.create();
+    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    
+    // Pinta el color de fondo solo dentro del área redondeada
+    g2.setColor(getBackground());  // Color de fondo
+    Area area = new Area(createRoundTopLeft());
+    if (roundTopRight > 0) {
+        area.intersect(new Area(createRoundTopRight()));
     }
+    if (roundBottomLeft > 0) {
+        area.intersect(new Area(createRoundBottomLeft()));
+    }
+    if (roundBottomRight > 0) {
+        area.intersect(new Area(createRoundBottomRight()));
+    }
+    
+    // Llena el área con el color de fondo
+    g2.fill(area);
+
+    g2.dispose();
+    super.paintComponent(grphcs);
+}
+
 
     private Shape createRoundTopLeft() {
         int width = getWidth();
