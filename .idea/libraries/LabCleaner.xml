@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="LabCleaner">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/LabCleaner.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
