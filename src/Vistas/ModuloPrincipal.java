@@ -1,24 +1,98 @@
-
 package Vistas;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatGradiantoDeepOceanIJTheme;
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.RenderingHints;
+import java.awt.Stroke;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
+import javax.swing.JComponent;
+import javax.swing.Timer;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import javax.swing.plaf.basic.BasicProgressBarUI;
 
 public class ModuloPrincipal extends javax.swing.JFrame {
+
+    Timer t;
+    ActionListener ac;
+    int x = 0;
 
     public ModuloPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+
+        progressBar.setUI(new BasicProgressBarUI() {
+            @Override
+            protected void paintDeterminate(Graphics g, JComponent c) {
+                Graphics2D g2d = (Graphics2D) g;
+
+                // Activar suavizado para bordes más suaves
+                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                // Obtener dimensiones del JProgressBar
+                int ancho = progressBar.getWidth();
+                int alto = progressBar.getHeight();
+
+                // Definir márgenes
+                int margen = 2;
+
+                // Calcular el área donde dibujar el progreso (dentro del margen)
+                int espacioAncho = ancho - 2 * margen;
+                int espacioAlto = alto - 2 * margen;
+
+                // Esquinas redondeadas: radio
+                int radioEsquina = 20;
+
+                // Dibujar el fondo del ProgressBar con esquinas redondeadas
+                g2d.setColor(Color.decode("#044860")); // Color para el fondo
+                g2d.fillRoundRect(margen, margen, espacioAncho, espacioAlto, radioEsquina, radioEsquina);
+
+                // Obtener el porcentaje de progreso (de 0.0 a 1.0)
+                double porcentajeProgress = progressBar.getPercentComplete();
+                if (porcentajeProgress < 0) {
+                    porcentajeProgress = 0;
+                }
+
+                // Calcular el ancho del progreso basado en el porcentaje
+                int progresoAncho = (int) (espacioAncho * porcentajeProgress);
+
+                // Dibujar el progreso con esquinas redondeadas
+                g2d.setColor(Color.decode("#EFF4F0"));
+                g2d.fillRoundRect(margen, margen, progresoAncho, espacioAlto, radioEsquina, radioEsquina);
+
+                // Dibujar un borde redondeado fijo, independiente del progreso
+                g2d.setColor(Color.decode("#EFF4F0"));
+                Stroke bordeGrosor = new BasicStroke(3); // Grosor del borde
+                g2d.setStroke(bordeGrosor);
+
+                // Dibujar el borde alrededor de toda la barra de progreso
+                g2d.drawRoundRect(margen, margen, espacioAncho, espacioAlto, radioEsquina, radioEsquina);
+            }
+        });
+
+        ActionListener ac = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                x = x + 1;
+                progressBar.setValue(x);
+            }
+        };
+
+        t = new Timer(50, ac);
+        t.start();
+
     }
- // Listo
-   
-   
+    // Listo
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,7 +103,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         Panel = new Vistas.PanelRound();
         detallesPendrive = new javax.swing.JLabel();
         elementos = new javax.swing.JLabel();
-        barraCarga = new javax.swing.JProgressBar();
+        progressBar = new javax.swing.JProgressBar();
         btnListarDrive = new javax.swing.JButton();
         scanButton = new javax.swing.JButton();
         elementosDefectuosos = new javax.swing.JLabel();
@@ -78,14 +152,19 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         elementos.setText("Disco Local (C):");
         Panel.add(elementos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        barraCarga.setBackground(new java.awt.Color(4, 72, 96));
-        barraCarga.setForeground(new java.awt.Color(255, 255, 255));
-        barraCarga.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        Panel.add(barraCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 270, 20));
+        progressBar.setBackground(new java.awt.Color(4, 72, 96));
+        progressBar.setForeground(new java.awt.Color(255, 255, 255));
+        Panel.add(progressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 270, 20));
 
         btnListarDrive.setBackground(new java.awt.Color(4, 72, 96));
         btnListarDrive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/flecha-abajo.png"))); // NOI18N
         btnListarDrive.setBorder(null);
+        btnListarDrive.setBorderPainted(false);
+        btnListarDrive.setContentAreaFilled(false);
+        btnListarDrive.setFocusPainted(false);
+        btnListarDrive.setFocusable(false);
+        btnListarDrive.setRequestFocusEnabled(false);
+        btnListarDrive.setRolloverEnabled(false);
         btnListarDrive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListarDriveActionPerformed(evt);
@@ -159,18 +238,17 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarDriveActionPerformed
 
     public static void main(String args[]) {
-      
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-         //Temas y colores
+        //Temas y colores
         //FlatDarkLaf() este es el modo oscuro
-         try {
-            FlatLightLaf.setup(); 
-        } catch( Exception ex ) {
-            System.err.println( "Failed to initialize LaF" );
+        try {
+            FlatLightLaf.setup();
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
         }
         //</editor-fold>
 
@@ -186,7 +264,6 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Logo;
     private Vistas.PanelRound Panel;
-    private javax.swing.JProgressBar barraCarga;
     private javax.swing.JButton btnListarDrive;
     private javax.swing.JButton buttonElementosDefectuso;
     private javax.swing.JLabel defectuoso;
@@ -196,6 +273,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel escanear;
     private javax.swing.JLabel historial;
     private javax.swing.JLabel historialScan;
+    private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton scanButton;
     // End of variables declaration//GEN-END:variables
 }
