@@ -22,12 +22,11 @@ public class conexion {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
         conexion = DriverManager.getConnection(url, usuario, contrasenna);
-        System.out.println("Conectado a la base de datos");
 
         // Crea una consulta SQL con un parámetro
-        query = "Select * from files where file = ?";
+        query = "Select * from files where file like ?";
         pstate = conexion.prepareStatement(query);
-        pstate.setString(1, fileName); // Establece el valor del parámetro
+        pstate.setString(1, "%" + fileName + "%"); // Establece el valor del parámetro
 
         // Ejecuta la consulta y recorre el resultado
         rset = pstate.executeQuery();
@@ -36,6 +35,13 @@ public class conexion {
     public static boolean archivoExiste(String fileName) throws SQLException, ClassNotFoundException {
         conexion conexion = new conexion("jdbc:mysql://127.0.0.1:3306/archivos", "root", "123456789");
         conectar(fileName);
-        return rset.next(); // devuelve true si el archivo se encontró, false en caso contrario
+        boolean exists = false;
+        if (rset.next()) {
+            String dbFileName = rset.getString("file");
+            if (dbFileName.equals(fileName)) {
+                exists = true;
+            }
+        }
+        return exists;
     }
 }

@@ -4,6 +4,10 @@ import java.io.File;
 
 
 public class driveFinding {
+    static String usbDevicePath = "/";
+
+
+
     public static String getDriveLetter(String usbDevicePath) {
         File usbDevice = new File(usbDevicePath);
         if (usbDevice.isDirectory()) {
@@ -43,7 +47,6 @@ public class driveFinding {
     }
 
     public static void main(String[] args) {
-        String usbDevicePath = "/";
         String driveLetter = getDriveLetter(usbDevicePath);
 
         if (driveLetter != null) {
