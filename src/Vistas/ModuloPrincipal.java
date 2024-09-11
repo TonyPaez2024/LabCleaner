@@ -29,6 +29,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         detallesPendrive = new javax.swing.JLabel();
         elementos = new javax.swing.JLabel();
         barraCarga = new javax.swing.JProgressBar();
+        btnListarDrive = new javax.swing.JButton();
         scanButton = new javax.swing.JButton();
         elementosDefectuosos = new javax.swing.JLabel();
         buttonElementosDefectuso = new javax.swing.JButton();
@@ -47,13 +48,13 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         escanear.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         escanear.setForeground(new java.awt.Color(255, 255, 255));
         escanear.setText("Escanear");
-        getContentPane().add(escanear, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, -1, -1));
+        getContentPane().add(escanear, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, -1, 40));
 
         defectuoso.setBackground(new java.awt.Color(255, 255, 255));
         defectuoso.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         defectuoso.setForeground(new java.awt.Color(4, 72, 96));
         defectuoso.setText("Elementos Defectuoso:");
-        getContentPane().add(defectuoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 570, -1, -1));
+        getContentPane().add(defectuoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, -1, -1));
 
         Logo.setBackground(new java.awt.Color(239, 244, 240));
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logo-labcleaner-.png"))); // NOI18N
@@ -66,12 +67,12 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         Panel.setRoundTopRight(50);
         Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        detallesPendrive.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        detallesPendrive.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         detallesPendrive.setForeground(new java.awt.Color(255, 255, 255));
         detallesPendrive.setText("12GB Disponibles de 28,8gb");
         Panel.add(detallesPendrive, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
 
-        elementos.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        elementos.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         elementos.setForeground(new java.awt.Color(255, 255, 255));
         elementos.setText("Disco Local (C):");
         Panel.add(elementos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
@@ -81,6 +82,16 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         barraCarga.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         Panel.add(barraCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 270, 20));
 
+        btnListarDrive.setBackground(new java.awt.Color(4, 72, 96));
+        btnListarDrive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/flecha-abajo.png"))); // NOI18N
+        btnListarDrive.setBorder(null);
+        btnListarDrive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarDriveActionPerformed(evt);
+            }
+        });
+        Panel.add(btnListarDrive, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 30));
+
         getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 320, 139));
 
         scanButton.setBackground(new java.awt.Color(239, 244, 240));
@@ -89,37 +100,41 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         scanButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/boton-escanear-.png"))); // NOI18N
         scanButton.setBorder(null);
         scanButton.setBorderPainted(false);
+        scanButton.setContentAreaFilled(false);
         scanButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         scanButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        scanButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/boton-escanear-oscuro.png"))); // NOI18N
         scanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scanButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(scanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, -1, 70));
+        getContentPane().add(scanButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, -1, 60));
 
         elementosDefectuosos.setBackground(new java.awt.Color(255, 255, 255));
         elementosDefectuosos.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         elementosDefectuosos.setForeground(new java.awt.Color(58, 216, 152));
         elementosDefectuosos.setText("4");
-        getContentPane().add(elementosDefectuosos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, 30, 40));
+        getContentPane().add(elementosDefectuosos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, 30, 40));
 
         buttonElementosDefectuso.setBackground(new java.awt.Color(239, 244, 240));
         buttonElementosDefectuso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/boton-elementos.png"))); // NOI18N
         buttonElementosDefectuso.setBorder(null);
+        buttonElementosDefectuso.setContentAreaFilled(false);
+        buttonElementosDefectuso.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/boton-elementos-oscuro.png"))); // NOI18N
         buttonElementosDefectuso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonElementosDefectusoActionPerformed(evt);
             }
         });
-        getContentPane().add(buttonElementosDefectuso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 540, 400, 80));
+        getContentPane().add(buttonElementosDefectuso, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, -1, 60));
 
-        historialScan.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        historialScan.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         historialScan.setForeground(new java.awt.Color(58, 216, 152));
         historialScan.setText("Nunca");
         getContentPane().add(historialScan, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 700, 50, -1));
 
-        historial.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        historial.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         historial.setForeground(new java.awt.Color(4, 72, 96));
         historial.setText("Último escáner de virus:");
         getContentPane().add(historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 180, -1));
@@ -137,6 +152,10 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     private void buttonElementosDefectusoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonElementosDefectusoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonElementosDefectusoActionPerformed
+
+    private void btnListarDriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarDriveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarDriveActionPerformed
 
     public static void main(String args[]) {
       
@@ -167,6 +186,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel Logo;
     private Vistas.PanelRound Panel;
     private javax.swing.JProgressBar barraCarga;
+    private javax.swing.JButton btnListarDrive;
     private javax.swing.JButton buttonElementosDefectuso;
     private javax.swing.JLabel defectuoso;
     private javax.swing.JLabel detallesPendrive;
