@@ -14,21 +14,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
-
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
-public class ModuloPrincipal extends javax.swing.JFrame {
 
+public class ModuloPrincipal extends javax.swing.JFrame {
+  
     Timer t;
     ActionListener ac;
     int x = 0;
 
     public ModuloPrincipal() {
+         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
+          
+        //esquinas redondas 
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 33, 33));
 
         progressBar.setUI(new BasicProgressBarUI() {
             @Override
@@ -79,7 +85,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
             }
         });
 
-        ActionListener ac = new ActionListener() {
+      /* ActionListener ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 x = x + 1;
@@ -88,10 +94,13 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         };
 
         t = new Timer(50, ac);
-        t.start();
+        t.start();*/
 
+   
+    // se actualizo
+    
     }
-    // Listo
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -99,7 +108,9 @@ public class ModuloPrincipal extends javax.swing.JFrame {
 
         escanear = new javax.swing.JLabel();
         defectuoso = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
+        modoDark = new javax.swing.JButton();
         Panel = new Vistas.PanelRound();
         detallesPendrive = new javax.swing.JLabel();
         elementos = new javax.swing.JLabel();
@@ -110,6 +121,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         buttonElementosDefectuso = new javax.swing.JButton();
         historialScan = new javax.swing.JLabel();
         historial = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,9 +143,34 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         defectuoso.setText("Elementos Defectuoso:");
         getContentPane().add(defectuoso, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 570, -1, -1));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Minimizar (4)_1.png"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setFocusPainted(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, 30));
+
         Logo.setBackground(new java.awt.Color(239, 244, 240));
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logo-labcleaner-.png"))); // NOI18N
         getContentPane().add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, 110));
+
+        modoDark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icono-sol.png"))); // NOI18N
+        modoDark.setBorder(null);
+        modoDark.setBorderPainted(false);
+        modoDark.setContentAreaFilled(false);
+        modoDark.setFocusPainted(false);
+        modoDark.setFocusable(false);
+        modoDark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoDarkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(modoDark, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 710, -1, 30));
 
         Panel.setBackground(new java.awt.Color(4, 72, 96));
         Panel.setRoundBottomLeft(50);
@@ -172,7 +209,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         });
         Panel.add(btnListarDrive, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 30));
 
-        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 320, 139));
+        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 320, 139));
 
         scanButton.setBackground(new java.awt.Color(239, 244, 240));
         scanButton.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -210,17 +247,30 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         getContentPane().add(buttonElementosDefectuso, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, -1, 60));
 
         historialScan.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-        historialScan.setForeground(new java.awt.Color(58, 216, 152));
+        historialScan.setForeground(new java.awt.Color(21, 110, 74));
         historialScan.setText("Nunca");
-        getContentPane().add(historialScan, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 700, 50, -1));
+        getContentPane().add(historialScan, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 720, 50, -1));
 
         historial.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         historial.setForeground(new java.awt.Color(4, 72, 96));
         historial.setText("Último escáner de virus:");
-        getContentPane().add(historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 180, -1));
+        getContentPane().add(historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 720, 180, -1));
+
+        jButton1.setBackground(new java.awt.Color(239, 244, 240));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Cerrar (1).png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 30, 30));
 
         Fondo.setBackground(new java.awt.Color(239, 244, 240));
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 440, 780));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,12 +280,28 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_scanButtonActionPerformed
 
     private void buttonElementosDefectusoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonElementosDefectusoActionPerformed
-        // TODO add your handling code here:
+       Confirmar confirmar = new Confirmar();
+                confirmar.setVisible(true);
+        
+     
     }//GEN-LAST:event_buttonElementosDefectusoActionPerformed
 
     private void btnListarDriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarDriveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnListarDriveActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setExtendedState(ModuloPrincipal.ICONIFIED);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void modoDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoDarkActionPerformed
+        Fondo.setBackground(Color.decode("#0F3349"));
+        
+    }//GEN-LAST:event_modoDarkActionPerformed
 
     public static void main(String args[]) {
 
@@ -273,6 +339,9 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel escanear;
     private javax.swing.JLabel historial;
     private javax.swing.JLabel historialScan;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton modoDark;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton scanButton;
     // End of variables declaration//GEN-END:variables
