@@ -24,7 +24,6 @@ public class controlador {
         for (String files : foundFiles) {
             try {
                 if (conexion.archivoExiste(files)) {
-                    System.out.println("Se comparo exitosamente");
                     System.out.println(files);
                 }
             } catch (SQLException | ClassNotFoundException e) {

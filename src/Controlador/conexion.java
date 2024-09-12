@@ -24,9 +24,8 @@ public class conexion {
         conexion = DriverManager.getConnection(url, usuario, contrasenna);
 
         // Crea una consulta SQL con un parámetro
-        query = "Select * from files where file like ?";
+        query = "Select * from files";
         pstate = conexion.prepareStatement(query);
-        pstate.setString(1, "%" + fileName + "%"); // Establece el valor del parámetro
 
         // Ejecuta la consulta y recorre el resultado
         rset = pstate.executeQuery();
@@ -36,12 +35,20 @@ public class conexion {
         conexion conexion = new conexion("jdbc:mysql://127.0.0.1:3306/archivos", "root", "123456789");
         conectar(fileName);
         boolean exists = false;
-        if (rset.next()) {
+        while (rset.next()) {
             String dbFileName = rset.getString("file");
-            if (dbFileName.equals(fileName)) {
+            if (matches(fileName, dbFileName)) {
                 exists = true;
+                break;
             }
         }
         return exists;
     }
+
+    public static boolean matches(String localFileName, String dbFileName) {
+        return localFileName.startsWith(dbFileName) ||
+                localFileName.endsWith(dbFileName);
+    }
 }
+
+//rafaelescanlonar@gmail.com

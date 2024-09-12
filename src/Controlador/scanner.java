@@ -16,6 +16,7 @@ public class scanner {
         while (!queue.isEmpty()) {
             File currentFile = queue.poll();
             if (currentFile.isDirectory()) {
+                foundFiles.add(currentFile.getName()); // Agregamos el nombre del directorio
                 File[] files = currentFile.listFiles();
                 if (files != null) {
                     for (File f : files) {
@@ -25,7 +26,7 @@ public class scanner {
                     System.out.println("No se puede leer el contenido del directorio.");
                 }
             } else {
-                foundFiles.add(currentFile.getName()); // Solo guardamos el nombre del archivo
+                foundFiles.add(currentFile.getName()); // Agregamos el nombre del archivo
             }
         }
         return foundFiles;
