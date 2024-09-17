@@ -23,7 +23,7 @@ import javax.swing.plaf.basic.BasicProgressBarUI;
 
 
 public class ModuloPrincipal extends javax.swing.JFrame {
-  
+  //actualizado
     Timer t;
     ActionListener ac;
     int x = 0;
@@ -85,7 +85,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
             }
         });
 
-      /* ActionListener ac = new ActionListener() {
+      ActionListener ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 x = x + 1;
@@ -94,10 +94,10 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         };
 
         t = new Timer(50, ac);
-        t.start();*/
+        t.start();
 
    
-    // se actualizo
+   
     
     }
    
@@ -106,11 +106,11 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        modoDark = new javax.swing.JButton();
         escanear = new javax.swing.JLabel();
         defectuoso = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         Logo = new javax.swing.JLabel();
-        modoDark = new javax.swing.JButton();
         Panel = new Vistas.PanelRound();
         detallesPendrive = new javax.swing.JLabel();
         elementos = new javax.swing.JLabel();
@@ -127,10 +127,24 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(239, 244, 240));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 440, 780));
-        setMinimumSize(new java.awt.Dimension(440, 780));
+        setMaximumSize(new java.awt.Dimension(430, 780));
+        setMinimumSize(new java.awt.Dimension(430, 780));
         setResizable(false);
         setSize(new java.awt.Dimension(440, 780));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        modoDark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icono-sol.png"))); // NOI18N
+        modoDark.setBorder(null);
+        modoDark.setBorderPainted(false);
+        modoDark.setContentAreaFilled(false);
+        modoDark.setFocusPainted(false);
+        modoDark.setFocusable(false);
+        modoDark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modoDarkActionPerformed(evt);
+            }
+        });
+        getContentPane().add(modoDark, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 710, -1, 30));
 
         escanear.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
         escanear.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,19 +172,6 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         Logo.setBackground(new java.awt.Color(239, 244, 240));
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/logo-labcleaner-.png"))); // NOI18N
         getContentPane().add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, 110));
-
-        modoDark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icono-sol.png"))); // NOI18N
-        modoDark.setBorder(null);
-        modoDark.setBorderPainted(false);
-        modoDark.setContentAreaFilled(false);
-        modoDark.setFocusPainted(false);
-        modoDark.setFocusable(false);
-        modoDark.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modoDarkActionPerformed(evt);
-            }
-        });
-        getContentPane().add(modoDark, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 710, -1, 30));
 
         Panel.setBackground(new java.awt.Color(4, 72, 96));
         Panel.setRoundBottomLeft(50);
@@ -270,6 +271,9 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 30, 30));
 
         Fondo.setBackground(new java.awt.Color(239, 244, 240));
+        Fondo.setMaximumSize(new java.awt.Dimension(430, 780));
+        Fondo.setMinimumSize(new java.awt.Dimension(430, 780));
+        Fondo.setPreferredSize(new java.awt.Dimension(430, 780));
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 780));
 
         pack();
@@ -280,10 +284,10 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_scanButtonActionPerformed
 
     private void buttonElementosDefectusoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonElementosDefectusoActionPerformed
-       Confirmar confirmar = new Confirmar();
-                confirmar.setVisible(true);
-        
-     
+          Confirmar confirmar = new Confirmar();
+          confirmar.setVisible(true);   
+          this.setVisible(false);
+
     }//GEN-LAST:event_buttonElementosDefectusoActionPerformed
 
     private void btnListarDriveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarDriveActionPerformed

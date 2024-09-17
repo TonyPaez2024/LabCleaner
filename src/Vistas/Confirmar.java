@@ -18,7 +18,7 @@ public class Confirmar extends javax.swing.JFrame {
         setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 50, 50));
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 33, 33));
 
         
     }
@@ -32,74 +32,106 @@ public class Confirmar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        Panel = new Vistas.PanelRound();
-        cancelar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaArchivos = new javax.swing.JTable();
+        eliminarArchivo = new javax.swing.JButton();
+        selectTodos = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
+        elementos1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(430, 780));
+        setMinimumSize(new java.awt.Dimension(430, 780));
+        setPreferredSize(new java.awt.Dimension(430, 780));
         setResizable(false);
+        setSize(new java.awt.Dimension(430, 780));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(239, 244, 240));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        tablaArchivos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"SoyVirus", "1kilogramo", ".com", "El mojan"},
+                {"ElDatos", "1tonelada", ".exe", "san francisco"},
+                {"Gta", "2g", ".exe", null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Tamaño", "Tipo ", "Ruta "
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        Panel.setBackground(new java.awt.Color(239, 244, 240));
-        Panel.setPreferredSize(new java.awt.Dimension(140, 266));
-        Panel.setRoundBottomLeft(50);
-        Panel.setRoundBottomRight(50);
-        Panel.setRoundTopLeft(50);
-        Panel.setRoundTopRight(50);
-        Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        cancelar.setText("Cancelar");
-        cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelarActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        Panel.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
+        jScrollPane1.setViewportView(tablaArchivos);
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(4, 72, 96));
-        jLabel1.setText("¿Estas seguro de realizar esta acción?");
-        Panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 410, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icono-aviso.png"))); // NOI18N
-        Panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 30, 40));
-
-        jButton3.setText("Eliminar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        eliminarArchivo.setBackground(new java.awt.Color(239, 244, 240));
+        eliminarArchivo.setText("Eliminar");
+        eliminarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                eliminarArchivoActionPerformed(evt);
             }
         });
-        Panel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
+        getContentPane().add(eliminarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 650, -1, -1));
 
-        jPanel1.add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 160));
+        selectTodos.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        selectTodos.setText("Seleccionar Todos");
+        selectTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectTodosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(selectTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jButton1.setBackground(new java.awt.Color(239, 244, 240));
+        jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 650, -1, -1));
+
+        elementos1.setBackground(new java.awt.Color(4, 72, 96));
+        elementos1.setFont(new java.awt.Font("Roboto Black", 0, 24)); // NOI18N
+        elementos1.setForeground(new java.awt.Color(4, 72, 96));
+        elementos1.setText("Elementos Encontrados");
+        getContentPane().add(elementos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 260, -1));
+
+        jLabel1.setBackground(new java.awt.Color(239, 244, 240));
+        jLabel1.setMaximumSize(new java.awt.Dimension(430, 780));
+        jLabel1.setMinimumSize(new java.awt.Dimension(430, 780));
+        jLabel1.setPreferredSize(new java.awt.Dimension(430, 780));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_cancelarActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void eliminarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarArchivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_eliminarArchivoActionPerformed
+
+    private void selectTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTodosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectTodosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ModuloPrincipal volver = new ModuloPrincipal();
+        volver.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,11 +159,12 @@ public class Confirmar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private Vistas.PanelRound Panel;
-    private javax.swing.JButton cancelar;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel elementos1;
+    private javax.swing.JButton eliminarArchivo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JCheckBox selectTodos;
+    private javax.swing.JTable tablaArchivos;
     // End of variables declaration//GEN-END:variables
 }
