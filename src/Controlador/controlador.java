@@ -1,14 +1,8 @@
 package Controlador;
 
 import java.io.File;
-import java.sql.*;
-import java.io.File.*;
+import java.sql.SQLException;
 import java.util.List;
-
-import Controlador.driveFinding.*;
-import Controlador.conexion.*;
-import Controlador.lastScan.*;
-import Controlador.scanner.*;
 
 public class controlador {
     static String fileName = ".lnk";

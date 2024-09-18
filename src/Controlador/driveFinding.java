@@ -1,27 +1,21 @@
 package Controlador;
 
-import java.io.File;
+import javax.swing.filechooser.FileSystemView;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class driveFinding {
-    static String usbDevicePath = "/";
 
-
-
-    public static String getDriveLetter(String usbDevicePath) {
-        File usbDevice = new File(usbDevicePath);
-        if (usbDevice.isDirectory()) {
-            File[] roots = File.listRoots();
-            for (File root : roots) {
-                if (root.getAbsolutePath().equals(usbDevice.getAbsolutePath())) {
-                    return root.getAbsolutePath();
-                }
-            }
-        }
-        return null; // dispositivo no encontrado
+    private static String getDeviceLabel(String usbDevicePath) {
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        File file = new File(usbDevicePath);
+        return fsv.getSystemDisplayName(file);
     }
 
-    public static void getDeviceInfo() {
+    public static List<DeviceInfo> getDeviceInfo() {
+        List<DeviceInfo> devices = new ArrayList<>();
         File[] roots = File.listRoots();
         for (File root : roots) {
             long totalSpace = root.getTotalSpace();
@@ -32,27 +26,65 @@ public class driveFinding {
             double freeGb = freeSpace / (1024 * 1024 * 1024.0);
             double usedGb = usedSpace / (1024 * 1024 * 1024.0);
 
-            System.out.println("Dispositivo: " + root.getAbsolutePath());
-            if (totalGb < 1) {
-                System.out.printf("Espacio total: %.2f MB%n", totalGb * 1024);
-                System.out.printf("Espacio libre: %.2f MB%n", freeGb * 1024);
-                System.out.printf("Espacio ocupado: %.2f MB%n", usedGb * 1024);
-            }else {
-                System.out.printf("Espacio total: %.2f GB%n", totalGb);
-                System.out.printf("Espacio libre: %.2f GB%n", freeGb);
-                System.out.printf("Espacio ocupado: %.2f GB%n", usedGb);
-                System.out.println();
-            }
+            String deviceLabel = getDeviceLabel(root.getAbsolutePath());
+
+            DeviceInfo device = new DeviceInfo(
+                    root.getAbsolutePath(),
+                    deviceLabel,
+                    totalGb,
+                    freeGb,
+                    usedGb
+            );
+            devices.add(device);
+        }
+        return devices;
+    }
+
+    public static class DeviceInfo {
+        private String devicePath;
+        private String deviceLabel;
+        private double totalSpace;
+        private double freeSpace;
+        private double usedSpace;
+
+        public DeviceInfo(String devicePath, String deviceLabel, double totalSpace, double freeSpace, double usedSpace) {
+            this.devicePath = devicePath;
+            this.deviceLabel = deviceLabel;
+            this.totalSpace = totalSpace;
+            this.freeSpace = freeSpace;
+            this.usedSpace = usedSpace;
+        }
+
+        public String getDevicePath() {
+            return devicePath;
+        }
+
+        public String getDeviceLabel() {
+            return deviceLabel;
+        }
+
+        public double getTotalSpace() {
+            return totalSpace;
+        }
+
+        public double getFreeSpace() {
+            return freeSpace;
+        }
+
+        public double getUsedSpace() {
+            return usedSpace;
         }
     }
 
-    /*public static void main(String[] args) {
-        String driveLetter = getDriveLetter(usbDevicePath);
-
-        if (driveLetter != null) {
-            driveFinding.getDeviceInfo();
-        } else {
-            System.out.println("Dispositivo no encontrado");
+    public static void main(String[] args) {
+        List<DeviceInfo> devices = getDeviceInfo();
+        for (DeviceInfo device : devices) {
+            System.out.println("Dispositivo: " + device.getDevicePath());
+            System.out.println("Etiqueta del dispositivo: " + device.getDeviceLabel());
+            System.out.printf("Espacio total: %.2f GB%n", device.getTotalSpace());
+            System.out.printf("Espacio libre: %.2f GB%n", device.getFreeSpace());
+            System.out.printf("Espacio ocupado: %.2f GB%n", device.getUsedSpace());
+            System.out.println();
         }
-    }*/
+    }
 }

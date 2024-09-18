@@ -50,5 +50,3 @@ public class conexion {
                 localFileName.endsWith(dbFileName);
     }
 }
-
-//rafaelescanlonar@gmail.com
