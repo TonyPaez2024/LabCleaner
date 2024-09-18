@@ -7,6 +7,7 @@ package Vistas;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JOptionPane;
 
 
 public class Confirmar extends javax.swing.JFrame {
@@ -43,7 +44,6 @@ public class Confirmar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(430, 780));
         setMinimumSize(new java.awt.Dimension(430, 780));
-        setPreferredSize(new java.awt.Dimension(430, 780));
         setResizable(false);
         setSize(new java.awt.Dimension(430, 780));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -53,13 +53,13 @@ public class Confirmar extends javax.swing.JFrame {
                 {"SoyVirus", "1kilogramo", ".com", "El mojan"},
                 {"ElDatos", "1tonelada", ".exe", "san francisco"},
                 {"Gta", "2g", ".exe", null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {"dsfd", "f", "f", "f"},
+                {"d", "f", "d", "f"},
+                {"d", "d", "f", "d"},
+                {"f", "s", "a", "a"},
+                {"a", "a", "a", "f"},
+                {"f", "s", "s", "f"},
+                {"f", "j", "u", "g"}
             },
             new String [] {
                 "Nombre", "Tamaño", "Tipo ", "Ruta "
@@ -120,7 +120,28 @@ public class Confirmar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarArchivoActionPerformed
-        // TODO add your handling code here:
+         // Mensaje del diálogo
+        String message = "¿Deseas eliminar los archivos seleccionados?";
+
+        // Títulos de los botones personalizados
+        String[] options = {"Sí", "No", "Cancelar"};
+
+        // Crear el diálogo personalizado
+        int option = JOptionPane.showOptionDialog(
+            null,                         // Componente padre (null para centrar)
+            message,                      // Mensaje del diálogo
+            "Confirmación",               // Título de la ventana
+            JOptionPane.YES_NO_CANCEL_OPTION, // Tipos de botones (sí, no, cancelar)
+            JOptionPane.QUESTION_MESSAGE,  // Tipo de ícono
+            null,                         // Icono personalizado (null para el predeterminado)
+            options,                      // Títulos personalizados para los botones
+            options[0]                    // Botón predeterminado
+        );
+
+        // Mostrar qué botón fue presionado
+        if (option == JOptionPane.YES_OPTION) {
+           JOptionPane.showMessageDialog(null, "Archivos Borrados","Confirmado", JOptionPane.INFORMATION_MESSAGE);
+        } 
     }//GEN-LAST:event_eliminarArchivoActionPerformed
 
     private void selectTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectTodosActionPerformed

@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.FlatGradiantoDeepOceanIJTheme;
 import java.awt.BasicStroke;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -16,24 +17,24 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
-
 public class ModuloPrincipal extends javax.swing.JFrame {
-  //actualizado
+
     Timer t;
     ActionListener ac;
     int x = 0;
 
     public ModuloPrincipal() {
-         setUndecorated(true);
+        setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
-          
-        //esquinas redondas 
+
+        //ESQUINAS REDONDEADAS 
         setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 33, 33));
 
         progressBar.setUI(new BasicProgressBarUI() {
@@ -85,7 +86,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
             }
         });
 
-      ActionListener ac = new ActionListener() {
+        ActionListener ac = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 x = x + 1;
@@ -95,12 +96,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
 
         t = new Timer(50, ac);
         t.start();
-
-   
-   
-    
     }
-   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -123,6 +119,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         historial = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(239, 244, 240));
@@ -196,6 +193,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
 
         btnListarDrive.setBackground(new java.awt.Color(4, 72, 96));
         btnListarDrive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/flecha-abajo.png"))); // NOI18N
+        btnListarDrive.setToolTipText("");
         btnListarDrive.setBorder(null);
         btnListarDrive.setBorderPainted(false);
         btnListarDrive.setContentAreaFilled(false);
@@ -210,7 +208,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         });
         Panel.add(btnListarDrive, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 50, 30));
 
-        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 320, 139));
+        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 320, 140));
 
         scanButton.setBackground(new java.awt.Color(239, 244, 240));
         scanButton.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
@@ -275,6 +273,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
         Fondo.setMinimumSize(new java.awt.Dimension(430, 780));
         Fondo.setPreferredSize(new java.awt.Dimension(430, 780));
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 780));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,9 +283,10 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_scanButtonActionPerformed
 
     private void buttonElementosDefectusoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonElementosDefectusoActionPerformed
-          Confirmar confirmar = new Confirmar();
-          confirmar.setVisible(true);   
-          this.setVisible(false);
+        Confirmar confirmar = new Confirmar();
+        confirmar.setVisible(true);
+        this.setVisible(false);
+
 
     }//GEN-LAST:event_buttonElementosDefectusoActionPerformed
 
@@ -295,16 +295,17 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListarDriveActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setExtendedState(ModuloPrincipal.ICONIFIED);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+   
     private void modoDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoDarkActionPerformed
-        Fondo.setBackground(Color.decode("#0F3349"));
+
         
+      
     }//GEN-LAST:event_modoDarkActionPerformed
 
     public static void main(String args[]) {
@@ -345,6 +346,7 @@ public class ModuloPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel historialScan;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modoDark;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton scanButton;
