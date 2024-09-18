@@ -2,7 +2,6 @@ package Vistas;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.intellijthemes.FlatGradiantoDeepOceanIJTheme;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
