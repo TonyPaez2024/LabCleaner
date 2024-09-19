@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="usb-api-1.0.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/usb-api-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
